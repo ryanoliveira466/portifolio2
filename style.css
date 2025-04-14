@@ -1,0 +1,436 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header,
+footer {
+    width: 100%;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.height-500-vh{
+  height: 2000vh;
+}
+
+.opacity-0-not-imp{
+  opacity: 0;
+}
+
+.d-none-not-imp{
+  display: none;
+}
+
+.font-size-60px{
+  font-size: 60px;
+}
+
+.textAnimation{
+    transition: transform 0.5s ease, font-size 0.5s ease;
+}
+
+.z-4{
+  z-index: 4 !important;
+}
+
+.z-5{
+  z-index: 5 !important;
+}
+
+.z-6{
+  z-index: 6 !important;
+}
+
+.z-7{
+  z-index: 7 !important;
+}
+
+.z-8{
+  z-index: 8 !important;
+}
+
+.z-9{
+  z-index: 9 !important;
+}
+
+.inner-scroll {
+  max-height: 70vh; 
+}
+
+.mh-100vh{
+  max-height: 100vh;
+}
+
+
+.img-lan-prog {
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+	margin: 1rem;
+	object-fit: cover;
+}
+
+
+.notes{
+  transform: translateY(100vh);
+  margin: 5px;
+}
+
+
+
+
+@media only screen and (max-width: 1000px) {
+  #text4 {
+    flex-direction: column !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .inner-scroll {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #note1{
+    height: 100px;
+    width: 140px;
+  }
+
+  #note2{
+    height: 50px;
+    width: 80px;
+  }
+}
+
+
+
+ /* keyframe */
+
+
+
+
+ @keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+}
+
+.img-slide-up {
+  animation: slideUpFromBottom 1.2s ease-out forwards;
+}
+
+
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+
+
+
+
+
+@keyframes fadeFillIn {
+  0% {
+    fill-opacity: 0;
+  }
+  100% {
+    fill-opacity: 1;
+  }
+}
+
+.animated-fill {
+  animation: fadeFillIn 2s ease-in-out forwards;
+}
+
+
+ @keyframes dashMove {
+  0% {
+    stroke-dashoffset: 3677.25;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 3677.25;
+  }
+}
+
+
+@keyframes dashMovePerson {
+  0% {
+    stroke-dashoffset: 2000;
+    fill-opacity: 0;
+  }
+
+  20%{
+    fill-opacity: 0;
+  }
+
+  40%{
+    fill-opacity: 0;
+  }
+
+  50% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+
+  20%{
+    fill-opacity: 1;
+  }
+
+  40%{
+    fill-opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 2000;
+    fill-opacity: 0;
+  }
+}
+
+
+
+/* keyframe */
+
+.animate-stroke-light-welcome path {
+  stroke: #ffffff;  
+  stroke-width: 2;
+  stroke-dasharray: 3677.25;
+  stroke-dashoffset: 3677.25;
+  animation: dashMove 8s ease-in-out infinite;
+  fill: none;
+}
+
+.animate-stroke-black-welcome path {
+  stroke: #000000;  
+  stroke-width: 2;
+  stroke-dasharray: 3677.25;
+  stroke-dashoffset: 3677.25;
+  animation: dashMove 8s ease-in-out infinite;
+  fill: none;
+}
+
+
+
+.animate-stroke-light-notes path {
+  animation: animated-fill 8s ease-in-out forwards;
+  fill:#ffffff !important
+}
+
+.animate-stroke-black-notes path {
+  animation: animated-fill 8s ease-in-out forwards;
+  fill:#000 !important
+}
+
+
+
+.animate-stroke-person .a {
+  stroke: #ffffff;  
+  stroke-width: 1;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dashMovePerson 8s ease-in-out infinite;
+  fill: #ffffff;
+  fill-opacity: 0;
+}
+
+.animate-stroke-person .b {
+  stroke: #7a7473;  
+  stroke-width: 1;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dashMovePerson 8s ease-in-out infinite;
+  fill: #7a7473;
+  fill-opacity: 0;
+}
+
+.animate-stroke-person .c {
+  stroke: #211715;  
+  stroke-width: 1;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dashMovePerson 8s ease-in-out infinite;
+  fill:#211715;
+  fill-opacity: 0;
+}
+
+.animate-stroke-person .d {
+  stroke: #87cce3;   
+  stroke-width: 1;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dashMovePerson 8s ease-in-out infinite;
+  fill: #87cce3;
+  fill-opacity: 0;
+}
+
