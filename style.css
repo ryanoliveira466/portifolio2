@@ -202,7 +202,7 @@ main {
 }
 
 .inner-scroll {
-  max-height: 70vh; 
+  max-height: 100vh; 
 }
 
 .mh-100vh{
@@ -222,6 +222,24 @@ main {
 .notes{
   transform: translateY(100vh);
   margin: 5px;
+}
+
+.prev-icon{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+}
+
+.next-icon{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
 }
 
 
@@ -256,6 +274,37 @@ main {
  /* keyframe */
 
 
+ @keyframes vortex {
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(90deg) scale(1.3);
+    filter: blur(1px);
+    opacity: 0.85;
+  }
+  50% {
+    transform: rotate(180deg) scale(0.8);
+    filter: blur(3px);
+    opacity: 0.6;
+  }
+  75% {
+    transform: rotate(270deg) scale(1.4);
+    filter: blur(1px);
+    opacity: 0.85;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.vortex {
+  animation: vortex 3s infinite ease-in-out;
+}
 
 
  @keyframes slideUpFromBottom {
@@ -273,7 +322,9 @@ main {
   animation: slideUpFromBottom 1.2s ease-out forwards;
 }
 
-
+.transform{
+  transition: transform 0.5s ease-in-out;
+}
 
 
 @keyframes float {
@@ -292,10 +343,6 @@ main {
 .float {
   animation: float 3s ease-in-out infinite;
 }
-
-
-
-
 
 
 @keyframes fadeFillIn {
@@ -381,19 +428,6 @@ main {
 }
 
 
-
-.animate-stroke-light-notes path {
-  animation: animated-fill 8s ease-in-out forwards;
-  fill:#ffffff !important
-}
-
-.animate-stroke-black-notes path {
-  animation: animated-fill 8s ease-in-out forwards;
-  fill:#000 !important
-}
-
-
-
 .animate-stroke-person .a {
   stroke: #ffffff;  
   stroke-width: 1;
@@ -433,4 +467,15 @@ main {
   fill: #87cce3;
   fill-opacity: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 

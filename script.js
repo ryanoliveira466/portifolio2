@@ -40,6 +40,7 @@ function zoomInOut(e) {
     const text5 = document.getElementById("text5");
     const text6 = document.getElementById("text6");
     const text7 = document.getElementById("text7");
+    const text8 = document.getElementById("text8");
 
     const scrollStart1 = 0;
     const scrollEnd1 = 0.10 * totalHeight;
@@ -61,6 +62,9 @@ function zoomInOut(e) {
 
     const scrollStart7 = scrollEnd6;
     const scrollEnd7 = 0.70 * totalHeight;
+
+    const scrollStart8 = scrollEnd7;
+    const scrollEnd8 = 0.80 * totalHeight;
 
 
 
@@ -209,6 +213,7 @@ function zoomInOut(e) {
         text5.style.opacity = 0;
         text5.style.fontSize = "16px";
         document.getElementById("text5").style.setProperty("pointer-events", "none", "important");
+      
     }
 
 
@@ -247,6 +252,7 @@ function zoomInOut(e) {
         text6.style.opacity = 0;
         text6.style.fontSize = "16px";
         document.getElementById("text6").style.setProperty("pointer-events", "none", "important");
+         
     }
 
 
@@ -257,6 +263,7 @@ function zoomInOut(e) {
     if (scrollTop >= scrollStart7 && scrollTop <= scrollEnd7) {
         const progress = (scrollTop - scrollStart7) / (scrollEnd7 - scrollStart7);
         const half = (scrollStart7 + scrollEnd7) / 2;
+        const middleLonger = scrollTop > (half) - ((scrollStart7 - scrollEnd7) * -0.1) && scrollTop < (half) + ((scrollStart7 - scrollEnd7) * -0.1)
         const minFontSize = 16;
         const maxFontSize = 35;
 
@@ -277,24 +284,33 @@ function zoomInOut(e) {
             const opacity7 = parseFloat((progress).toFixed(1));
             text7.style.opacity = opacity7;
 
-            const fontSize = minFontSize + (maxFontSize - minFontSize) * progress;
-            text7.style.fontSize = `${fontSize}px`;
+            text7.style.transform = `scale(1) rotate(0)`;
         }
 
-        if (scrollTop > half) {
+    
+        //middle
+        if (middleLonger) {
+            text7.style.transform = `scale(1) rotate(0)`; 
+        }
+
+
+        if(scrollTop > half && middleLonger == false) {
             const progress = (scrollTop - half) / (scrollEnd7 - half);
             const opacity7 = parseFloat((1 - progress).toFixed(1));
             text7.style.opacity = opacity7;
 
-            const fontSize = minFontSize + (maxFontSize - minFontSize) * (1 - progress);
-            text7.style.fontSize = `${fontSize}px`;
+            const scale7 = parseFloat((1 + progress * 3).toFixed(1));
+            const rotate7 = parseFloat((0 + progress * 90).toFixed(1));
+            text7.style.transform = `scale(${scale7}) rotate(${rotate7}deg)`;
         }
+
 
     }
 
     else {
         text7.style.opacity = 0;
-        text7.style.fontSize = "16px";
+        text7.style.transform = `scale(1)`
+        text7.style.transform = `rotate(0)deg`
         document.getElementById("text7").style.setProperty("pointer-events", "none", "important");
         const notes = document.querySelectorAll('.notes');
 
@@ -304,6 +320,45 @@ function zoomInOut(e) {
             note.classList.remove('float');
         });
 
+    }
+
+
+
+
+
+     // TEXT 8
+     if (scrollTop >= scrollStart8 && scrollTop <= scrollEnd8) {
+        const progress = (scrollTop - scrollStart8) / (scrollEnd8 - scrollStart8);
+        const half = (scrollStart8 + scrollEnd8) / 2;
+        const middleLonger = scrollTop > (half) - ((scrollStart8 - scrollEnd8) * -0.1) && scrollTop < (half) + ((scrollStart8 - scrollEnd8) * -0.1)
+        const minFontSize = 16;
+        const maxFontSize = 35;
+
+        text8.style.pointerEvents = 'all'
+
+      
+        if (scrollTop < half) {
+            const progress = (scrollTop - scrollStart8) / (half - scrollStart8);
+            const opacity8 = parseFloat((progress).toFixed(1));
+            text8.style.opacity = opacity8;
+
+            text8.style.transform = `scale(1) rotate(0)`;
+        }
+
+    
+        if(scrollTop > half) {
+            const progress = (scrollTop - half) / (scrollEnd8 - half);
+            const opacity8 = parseFloat((1 - progress).toFixed(1));
+            text8.style.opacity = opacity8;
+     
+        }
+
+
+    }
+
+    else {
+        text8.style.opacity = 0;
+        document.getElementById("text8").style.setProperty("pointer-events", "none", "important");
     }
 
 
