@@ -50,36 +50,38 @@ function zoomInOut(e) {
     const text8 = document.getElementById("text8");
     const text9 = document.getElementById("text9");
     const text10 = document.getElementById("text10");
+    const text11 = document.getElementById("text11");
 
     const scrollStart1 = 0;
-    const scrollEnd1 = 0.10 * totalHeight;
+    const scrollEnd1 = 0.09 * totalHeight;
 
     const scrollStart2 = scrollEnd1;
-    const scrollEnd2 = 0.20 * totalHeight;
+    const scrollEnd2 = 0.18 * totalHeight;
 
     const scrollStart3 = scrollEnd2;
-    const scrollEnd3 = 0.30 * totalHeight;
+    const scrollEnd3 = 0.27 * totalHeight;
 
     const scrollStart4 = scrollEnd3;
-    const scrollEnd4 = 0.40 * totalHeight;
+    const scrollEnd4 = 0.36 * totalHeight;
 
     const scrollStart5 = scrollEnd4;
-    const scrollEnd5 = 0.50 * totalHeight;
+    const scrollEnd5 = 0.45 * totalHeight;
 
     const scrollStart6 = scrollEnd5;
-    const scrollEnd6 = 0.60 * totalHeight;
+    const scrollEnd6 = 0.54 * totalHeight;
 
     const scrollStart7 = scrollEnd6;
-    const scrollEnd7 = 0.70 * totalHeight;
+    const scrollEnd7 = 0.63 * totalHeight;
 
     const scrollStart8 = scrollEnd7;
-    const scrollEnd8 = 0.80 * totalHeight;
+    const scrollEnd8 = 0.72 * totalHeight;
 
     const scrollStart9 = scrollEnd8;
-    const scrollEnd9 = 0.90 * totalHeight;
+    const scrollEnd9 = 0.81 * totalHeight;
 
     const scrollStart10 = scrollEnd9;
     const scrollEnd10 = 1 * totalHeight;
+
 
 
 
@@ -299,13 +301,13 @@ function zoomInOut(e) {
             const opacity7 = parseFloat((progress).toFixed(1));
             text7.style.opacity = opacity7;
 
-            text7.style.transform = `scale(1) rotate(0)`;
+            text7.style.transform = `scale(1) translateY(0)`;
         }
 
 
         //middle
         if (middleLonger) {
-            text7.style.transform = `scale(1) rotate(0)`;
+            text7.style.transform = `scale(1) translateY(0)`;
         }
 
 
@@ -315,8 +317,8 @@ function zoomInOut(e) {
             text7.style.opacity = opacity7;
 
             const scale7 = parseFloat((1 + progress * 3).toFixed(1));
-            const rotate7 = parseFloat((0 + progress * 90).toFixed(1));
-            text7.style.transform = `scale(${scale7}) rotate(${rotate7}deg)`;
+            const translateY7 = parseFloat((0 + progress * 100).toFixed(1));
+            text7.style.transform = `scale(${scale7}) translateY(${-translateY7}vh)`;
         }
 
 
@@ -378,7 +380,7 @@ function zoomInOut(e) {
 
             const scale8 = parseFloat((1 + progress * 3).toFixed(1));
             const translateY8 = parseFloat((0 + progress * 100).toFixed(1));
-            text8.style.transform = `scale(${scale8}) translateY(${-translateY8}ch)`;
+            text8.style.transform = `scale(${scale8}) translateY(${-translateY8}vh)`;
         }
 
 
@@ -445,40 +447,46 @@ function zoomInOut(e) {
         const progress = (scrollTop - scrollStart10) / (scrollEnd10 - scrollStart10);
         const half = (scrollStart10 + scrollEnd10) / 2;
         const middleLonger = scrollTop > (half) - ((scrollStart10 - scrollEnd10) * -0.1) && scrollTop < (half) + ((scrollStart10 - scrollEnd10) * -0.1)
-        const startLonger = scrollTop > (scrollStart10) - ((scrollStart10 - scrollEnd10) * 0.03)
+        const middleEnd = scrollTop > (half) + ((scrollStart10 - scrollEnd10) * -0.05)
+        const startLonger = scrollTop > (scrollStart10) - ((scrollStart10 - scrollEnd10) * 0.05)
         const minFontSize = 16;
         const maxFontSize = 35;
         const width10 = text10.offsetWidth;
         const height10 = text10.offsetHeight;
         const theme = document.body.getAttribute('data-bs-theme');
 
-
         text10.style.opacity = 1;
         text10.style.pointerEvents = 'all'
         text10.classList.add('fadeIn');
 
+        if (scrollTop < half) {
+            rose.style.transform = `rotate3d(0,0,1,${0}deg)`
+        }
 
-        if (startLonger) {
+
+        if (startLonger && scrollTop < half) {
 
             //rose and hole
+            const progress = (scrollTop - scrollStart10) / (half - scrollStart10);
             const lightToDarkColor = parseFloat((255 - progress * 255).toFixed(1));
             const darkToLight = parseFloat((0 + progress * 255).toFixed(1));
             let contrast = 0
             if (theme === 'light') {
                 contrast = lightToDarkColor
+                document.getElementById('sun').style.display = 'none'
+                document.getElementById('moon').style.display = 'flex'
             }
             else {
                 contrast = darkToLight
+                document.getElementById('sun').style.display = 'flex'
+                document.getElementById('moon').style.display = 'none'
             }
 
-            const hole = document.getElementById('hole')
+          
             const rose = document.getElementById('rose')
             const width = parseFloat((140 + progress * width10).toFixed(1));
             const height = parseFloat((140 + progress * height10).toFixed(1));
             const rotate3d = parseFloat((0 + progress * 360).toFixed(1));
-            hole.style.width = `${width}px`
-            hole.style.height = `${height}px`
-            hole.style.backgroundColor = `rgb(${contrast},${contrast},${contrast})`
             rose.style.transform = `rotate3d(0,0,1,${rotate3d}deg)`
 
             text10.style.backgroundColor = `rgb(${contrast},${contrast},${contrast})`
@@ -487,29 +495,28 @@ function zoomInOut(e) {
         }
 
         else{
-            hole.style.width = `${140}px`
-            hole.style.height = `${140}px`
-            rose.style.transform = `rotate3d(0,0,1,${0}deg)`
+            
         }
-
-
 
 
         if (scrollTop < half) {
-
+            const rose = document.getElementById('rose')
+            rose.classList.remove('fadeOff')
         }
 
 
-        if (scrollTop > half) {
-
+        if (scrollTop > half && middleEnd) {
+            const rose = document.getElementById('rose')
+            const thanks = document.getElementById('thanks')
+            rose.classList.add('fadeOff')
+            thanks.classList.remove('fadeOff')
+            thanks.classList.add('fadeIn')
         }
 
-        if (scrollTop >= scrollEnd10) {
-            hole.style.borderRadius = '0px'
-        }
-
-        else {
-            hole.style.borderRadius = '100px'
+        else{
+            const thanks = document.getElementById('thanks')
+            thanks.classList.remove('fadeIn')
+            thanks.classList.add('fadeOff')
         }
 
 
@@ -524,10 +531,10 @@ function zoomInOut(e) {
 
 
 
+
 }
 
 let ticking = false;
-
 window.addEventListener('scroll', () => {
     if (!ticking) {
         requestAnimationFrame(() => {
@@ -537,4 +544,56 @@ window.addEventListener('scroll', () => {
         ticking = true;
     }
 });
+
+
+function changeTheme() {
+    
+    const welcomeSVG = document.getElementById('welcomeSVG');
+    const likes = document.querySelectorAll('.likes')
+    const theme = document.body.getAttribute('data-bs-theme');
+    const images = document.querySelectorAll('.carousel-item')
+
+    welcomeSVG.classList.remove('animate-stroke-black-welcome', 'animate-stroke-light-welcome');
+    likes.forEach(like => {
+        like.classList.remove('animate-stroke-black-likes', 'animate-stroke-light-likes');
+    });
+
+    images.forEach(image => {
+        image.classList.remove('active');
+    });
+
+    
+    if (theme == 'dark') {
+        document.body.setAttribute('data-bs-theme', 'light')
+
+        welcomeSVG.classList.add('animate-stroke-black-welcome');
+        likes.forEach(like => {
+            like.classList.add('animate-stroke-black-likes');
+        });
+
+        document.getElementById('lightStart1').classList.add('active')
+        document.getElementById('lightStart2').classList.add('active')
+    } else {
+        document.body.setAttribute('data-bs-theme', 'dark')
+
+        welcomeSVG.classList.add('animate-stroke-light-welcome');
+        likes.forEach(like => {
+            like.classList.add('animate-stroke-light-likes');
+        });
+
+        document.getElementById('darkStart1').classList.add('active')
+        document.getElementById('darkStart2').classList.add('active')
+
+    }
+
+    window.scrollTo(0,0)
+    document.body.classList.remove('fadeIn')
+    document.body.classList.remove('fadeOff')
+    document.body.classList.add('fadeOff')
+    document.body.addEventListener('animationend' ,function() {
+        document.body.classList.remove('fadeOff')
+        document.body.classList.add('fadeIn')
+    })
+    
+}
 
