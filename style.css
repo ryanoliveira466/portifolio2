@@ -178,7 +178,7 @@ main {
 }
 
 .transition3d{
-  transition: transform 0.5s ease;
+  transition: transform 0.2s ease;
 }
 
 .z-4 {
@@ -225,7 +225,6 @@ main {
   margin: 1rem;
   object-fit: cover;
   transition: transform 0.4s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.09) -3px 11px 1px, rgba(0, 0, 0, 0.09) -10px 9px 2px, rgba(0, 0, 0, 0.09) -20px 14px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) -20px 20px 16px;
 }
 
 .img-lan-prog:hover {
@@ -260,24 +259,24 @@ main {
 @keyframes view3d {
 
   0% {
-    transform: translateY(0) rotate3d(1, 1, 1, 312deg);
+    transform: translateY(0);
     ;
 
   }
 
   50% {
-    transform: translateY(-10px) rotate3d(1, 1, 1, 312deg);
+    transform: translateY(-10px);
     ;
   }
 
   100% {
-    transform: translateY(0) rotate3d(1, 1, 1, 312deg);
+    transform: translateY(0);
     ;
   }
 }
 
 .view3d {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+   
   animation: view3d 3s ease-in-out infinite;
   border-radius: 10px;
 }
@@ -295,24 +294,6 @@ main {
     flex-direction: row;
   }
 
-  @keyframes view3d {
-
-    0% {
-      transform: translateY(0) rotate3d(1, 1, 1, 348deg);
-      ;
-
-    }
-
-    50% {
-      transform: translateY(-10px) rotate3d(1, 1, 1, 348deg);
-      ;
-    }
-
-    100% {
-      transform: translateY(0) rotate3d(1, 1, 1, 348deg);
-      ;
-    }
-  }
 }
 
 @media only screen and (max-width: 900px) {

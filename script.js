@@ -169,7 +169,7 @@ function zoomInOut(e) {
     if (scrollTop >= scrollStart4 && scrollTop <= scrollEnd4) {
         const progress = (scrollTop - scrollStart4) / (scrollEnd4 - scrollStart4);
         const half = (scrollStart4 + scrollEnd4) / 2;
-        const minFontSize = 16;
+        const minFontSize = 35;
         const maxFontSize = 35;
 
         if (scrollTop < half) {
@@ -317,8 +317,8 @@ function zoomInOut(e) {
             text7.style.opacity = opacity7;
 
             const scale7 = parseFloat((1 + progress * 3).toFixed(1));
-            const translateY7 = parseFloat((0 + progress * 100).toFixed(1));
-            text7.style.transform = `scale(${scale7}) translateY(${-translateY7}vh)`;
+            const rotate7 = parseFloat((0 + progress * 100).toFixed(1));
+            text7.style.transform = `scale(${scale7})`;
         }
 
 
@@ -379,8 +379,8 @@ function zoomInOut(e) {
             text8.style.opacity = opacity8;
 
             const scale8 = parseFloat((1 + progress * 3).toFixed(1));
-            const translateY8 = parseFloat((0 + progress * 100).toFixed(1));
-            text8.style.transform = `scale(${scale8}) translateY(${-translateY8}vh)`;
+            const rotate8 = parseFloat((0 + progress * 100).toFixed(1));
+            text8.style.transform = `scale(${scale8})`;
         }
 
 
@@ -596,4 +596,3 @@ function changeTheme() {
     })
     
 }
-
