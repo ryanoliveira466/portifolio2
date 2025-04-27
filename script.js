@@ -50,7 +50,7 @@ function zoomInOut(e) {
     const text8 = document.getElementById("text8");
     const text9 = document.getElementById("text9");
     const text10 = document.getElementById("text10");
-    const text11 = document.getElementById("text11");
+    
 
     const scrollStart1 = 0;
     const scrollEnd1 = 0.09 * totalHeight;
@@ -169,6 +169,7 @@ function zoomInOut(e) {
     if (scrollTop >= scrollStart4 && scrollTop <= scrollEnd4) {
         const progress = (scrollTop - scrollStart4) / (scrollEnd4 - scrollStart4);
         const half = (scrollStart4 + scrollEnd4) / 2;
+        text4.style.fontSize = "35px";
         const minFontSize = 35;
         const maxFontSize = 35;
 
@@ -177,24 +178,21 @@ function zoomInOut(e) {
             const opacity4 = parseFloat((progress).toFixed(1));
             text4.style.opacity = opacity4;
 
-            const fontSize = minFontSize + (maxFontSize - minFontSize) * progress;
-            text4.style.fontSize = `${fontSize}px`;
+          
         }
 
         if (scrollTop > half) {
             const progress = (scrollTop - half) / (scrollEnd4 - half);
             const opacity4 = parseFloat((1 - progress).toFixed(1));
             text4.style.opacity = opacity4;
-
-            const fontSize = minFontSize + (maxFontSize - minFontSize) * (1 - progress);
-            text4.style.fontSize = `${fontSize}px`;
+ 
         }
 
     }
 
     else {
         text4.style.opacity = 0;
-        text4.style.fontSize = "16px";
+        text4.style.fontSize = "35px";
     }
 
     // TEXT 5
