@@ -511,6 +511,7 @@ function zoomInOut(e) {
             rose.classList.add('fadeOff')
             thanks.classList.remove('fadeOff')
             thanks.classList.add('fadeIn')
+            rose.style.transform = `rotate3d(0,0,1,${360}deg)`
         }
 
         else{
